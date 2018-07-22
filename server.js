@@ -7,11 +7,9 @@ app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname + '/index.html'))
 );
 
-app.get('/data/dtltrd.xml', function(req, res) {
-  var xml = path.join(__dirname + '/data/dtltrd.xml');
-  var json = parser.toJson(xml);
-  res.sendFile(json);
-});
+app.get('/js/treasuryChart', (req, res) => 
+  res.sendFile(path.join(__dirname + '/js/treasuryChart.js')
+));
 
 const port = process.env.PORT || 5000;
 

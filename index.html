@@ -1,38 +1,7 @@
 <!doctype html>
 <head>
     <script src="https://cdn.anychart.com/releases/8.3.0/js/anychart-bundle.min.js" type="text/javascript"></script>
-    <script>
-    let getXMLFile = function(path, callback) {
-      let request = new XMLHttpRequest();
-      request.open("GET", path);
-      request.setRequestHeader("Content-Type", "text/xml");
-      
-      request.onreadystatechange = function() {
-        if (request.readyState === 4 && request.status === 200) {
-          callback(request.responseXML);
-        }
-      };
-      request.send();
-    };
-    
-    
-    getXMLFile("data/dtltrd.xml", function(json) {
-      console.log(json, "<- json")
-    });
-
-    anychart.onDocumentReady(function () {
-        
-      
-      // console.log(getXMLFile, " <- getXMLFile");
-      // chart type
-      chart = anychart.line();
-
-      chart.title('Historical Treasury Rates');
-
-      chart.container('container');
-      chart.draw();
-    });
-    </script>
+    <script src="/js/treasuryChart.js"></script>
 </head>
 <body>
     <div id="container" style="width: 500px; height: 400px;"></div>

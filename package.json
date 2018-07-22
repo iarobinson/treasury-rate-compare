@@ -9,6 +9,7 @@
   "author": "Ian Robinson",
   "license": "MIT",
   "dependencies": {
+    "anychart": "^8.3.0",
     "express": "^4.16.3",
     "path": "^0.12.7",
     "xml2json": "^0.11.2"
