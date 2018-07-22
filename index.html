@@ -1,25 +1,37 @@
 <!doctype html>
 <head>
-    <script src="https://cdn.anychart.com/releases/8.3.0/js/anychart-base.min.js" type="text/javascript"></script>
+    <script src="https://cdn.anychart.com/releases/8.3.0/js/anychart-bundle.min.js" type="text/javascript"></script>
     <script>
-      anychart.onDocumentLoad(function () {
-        // create an instance of a pie chart
-        var chart = anychart.pie();
-        // set the data
-        chart.data([
-          ["Chocolate", 5],
-          ["Rhubarb compote", 2],
-          ["Crêpe Suzette", 2],
-          ["American blueberry", 2],
-          ["Buttermilk", 1]
-        ]);
-        // set chart title
-        chart.title("Top 5 pancake fillings");
-        // set the container element 
-        chart.container("container");
-        // initiate chart display
-        chart.draw();
-      });
+    let getXMLFile = function(path, callback) {
+      let request = new XMLHttpRequest();
+      request.open("GET", path);
+      request.setRequestHeader("Content-Type", "text/xml");
+      
+      request.onreadystatechange = function() {
+        if (request.readyState === 4 && request.status === 200) {
+          callback(request.responseXML);
+        }
+      };
+      request.send();
+    };
+    
+    
+    getXMLFile("data/dtltrd.xml", function(json) {
+      console.log(json, "<- json")
+    });
+
+    anychart.onDocumentReady(function () {
+        
+      
+      // console.log(getXMLFile, " <- getXMLFile");
+      // chart type
+      chart = anychart.line();
+
+      chart.title('Historical Treasury Rates');
+
+      chart.container('container');
+      chart.draw();
+    });
     </script>
 </head>
 <body>
